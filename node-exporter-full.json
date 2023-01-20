@@ -32,7 +32,7 @@
         "icon": "external link",
         "tags": [],
         "targetBlank": true,
-        "title": "GitHub",
+        "title": "orig GitHub",
         "type": "link",
         "url": "https://github.com/rfmoz/grafana-dashboards"
       },
@@ -40,7 +40,7 @@
         "icon": "external link",
         "tags": [],
         "targetBlank": true,
-        "title": "Grafana",
+        "title": "orig Grafana",
         "type": "link",
         "url": "https://grafana.com/grafana/dashboards/1860"
       }
