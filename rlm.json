@@ -25,7 +25,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 24,
+  "id": 33,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -62,7 +62,7 @@
       "dashes": false,
       "datasource": {
         "type": "prometheus",
-        "uid": "000000002"
+        "uid": "${datasource}"
       },
       "description": "",
       "fieldConfig": {
@@ -101,7 +101,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "9.1.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -114,7 +114,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "000000002"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "sum(rlm_feature_issued{name='$feature_name', server='$server'})",
@@ -128,7 +128,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "000000002"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "sum(rlm_feature_used_users{name='$feature_name', server='$server'})",
@@ -143,7 +143,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "000000002"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "sum(rlm_feature_used_users{name='$feature_name', server='$server'})",
@@ -192,7 +192,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "000000002"
+        "uid": "${datasource}"
       },
       "fieldConfig": {
         "defaults": {
@@ -267,12 +267,12 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "9.2.5",
+      "pluginVersion": "9.1.7",
       "targets": [
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "000000002"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "expr": "sum(rlm_feature_used_users{name=\"$feature_name\", server=\"$server\"}) by (user, machine)",
@@ -306,17 +306,15 @@
         "current": {
           "selected": true,
           "text": [
-            "nuke_i",
-            "nukex_i"
+            "All"
           ],
           "value": [
-            "nuke_i",
-            "nukex_i"
+            "$__all"
           ]
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "000000002"
+          "uid": "${datasource}"
         },
         "definition": "label_values(rlm_feature_used, name)",
         "hide": 0,
@@ -340,18 +338,18 @@
       },
       {
         "current": {
-          "selected": false,
-          "text": "rlm.ghostvfx.local",
-          "value": "rlm.ghostvfx.local"
+          "selected": true,
+          "text": "10.70.2.31",
+          "value": "10.70.2.31"
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "000000002"
+          "uid": "${datasource}"
         },
         "definition": "label_values(rlm_feature_used, server)",
         "hide": 0,
         "includeAll": false,
-        "label": "Region",
+        "label": "server",
         "multi": false,
         "name": "server",
         "options": [],
@@ -364,11 +362,28 @@
         "skipUrlSync": false,
         "sort": 0,
         "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "Prometheus",
+          "value": "Prometheus"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
       }
     ]
   },
   "time": {
-    "from": "now-2d",
+    "from": "now-15m",
     "to": "now"
   },
   "timepicker": {
@@ -398,6 +413,6 @@
   "timezone": "",
   "title": "RLM",
   "uid": "FY8bw-vWk",
-  "version": 44,
+  "version": 3,
   "weekStart": ""
 }

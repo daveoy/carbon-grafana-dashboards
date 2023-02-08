@@ -1,213 +1,238 @@
 {
-    "annotations": {
-      "list": [
-        {
-          "builtIn": 1,
-          "datasource": {
-            "type": "grafana",
-            "uid": "-- Grafana --"
-          },
-          "enable": true,
-          "hide": true,
-          "iconColor": "rgba(0, 211, 255, 1)",
-          "name": "Annotations & Alerts",
-          "target": {
-            "limit": 100,
-            "matchAny": false,
-            "tags": [],
-            "type": "dashboard"
-          },
-          "type": "dashboard"
-        }
-      ]
-    },
-    "editable": true,
-    "fiscalYearStartMonth": 0,
-    "graphTooltip": 0,
-    "id": 44,
-    "links": [],
-    "liveNow": false,
-    "panels": [
+  "annotations": {
+    "list": [
       {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 34,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${datasource}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto",
+            "filterable": false,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "expire"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dateTimeAsIso"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Time"
+            },
+            "properties": [
+              {
+                "id": "custom.hidden",
+                "value": true
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "start"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "dateTimeAsIso"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 24,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 2,
+      "options": {
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": false,
+            "displayName": "expire"
+          }
+        ]
+      },
+      "pluginVersion": "9.1.7",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "sum(rlm_feature_issued{name=~\"$feature\", server=~\"$server\"}) by (expire, start, name, server, version)",
+          "format": "table",
+          "instant": true,
+          "interval": "",
+          "legendFormat": "Amount",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "Expiration Dates",
+      "type": "table"
+    }
+  ],
+  "schemaVersion": 37,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "10.70.2.31"
+          ],
+          "value": [
+            "10.70.2.31"
+          ]
+        },
         "datasource": {
           "type": "prometheus",
-          "uid": "000000002"
+          "uid": "${datasource}"
         },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "custom": {
-              "align": "auto",
-              "displayMode": "auto",
-              "filterable": false,
-              "inspect": false
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                }
-              ]
-            }
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "expire"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "dateTimeAsIso"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "Time"
-              },
-              "properties": [
-                {
-                  "id": "custom.hidden",
-                  "value": true
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "start"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "dateTimeAsIso"
-                }
-              ]
-            }
+        "definition": "label_values(rlm_feature_issued, server)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Server",
+        "multi": true,
+        "name": "server",
+        "options": [],
+        "query": {
+          "query": "label_values(rlm_feature_issued, server)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
           ]
         },
-        "gridPos": {
-          "h": 24,
-          "w": 24,
-          "x": 0,
-          "y": 0
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
         },
-        "id": 2,
-        "options": {
-          "footer": {
-            "fields": "",
-            "reducer": [
-              "sum"
-            ],
-            "show": false
-          },
-          "showHeader": true,
-          "sortBy": [
-            {
-              "desc": false,
-              "displayName": "expire"
-            }
-          ]
+        "definition": "label_values(rlm_feature_issued, name)",
+        "hide": 0,
+        "includeAll": true,
+        "label": "Feature",
+        "multi": true,
+        "name": "feature",
+        "options": [],
+        "query": {
+          "query": "label_values(rlm_feature_issued, name)",
+          "refId": "StandardVariableQuery"
         },
-        "pluginVersion": "9.2.5",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "000000002"
-            },
-            "editorMode": "code",
-            "exemplar": false,
-            "expr": "sum(rlm_feature_issued{name=~\"$feature\", server=~\"$server\"}) by (expire, start, name, server, version)",
-            "format": "table",
-            "instant": true,
-            "interval": "",
-            "legendFormat": "Amount",
-            "range": false,
-            "refId": "A"
-          }
-        ],
-        "title": "Expiration Dates",
-        "type": "table"
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      },
+      {
+        "current": {
+          "selected": false,
+          "text": "Prometheus",
+          "value": "Prometheus"
+        },
+        "hide": 0,
+        "includeAll": false,
+        "multi": false,
+        "name": "datasource",
+        "options": [],
+        "query": "prometheus",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
       }
-    ],
-    "schemaVersion": 37,
-    "style": "dark",
-    "tags": [],
-    "templating": {
-      "list": [
-        {
-          "current": {
-            "selected": false,
-            "text": "All",
-            "value": "$__all"
-          },
-          "datasource": {
-            "type": "prometheus",
-            "uid": "000000002"
-          },
-          "definition": "label_values(rlm_feature_issued, server)",
-          "hide": 0,
-          "includeAll": true,
-          "label": "Server",
-          "multi": true,
-          "name": "server",
-          "options": [],
-          "query": {
-            "query": "label_values(rlm_feature_issued, server)",
-            "refId": "StandardVariableQuery"
-          },
-          "refresh": 1,
-          "regex": "",
-          "skipUrlSync": false,
-          "sort": 0,
-          "type": "query"
-        },
-        {
-          "current": {
-            "selected": false,
-            "text": "All",
-            "value": "$__all"
-          },
-          "datasource": {
-            "type": "prometheus",
-            "uid": "000000002"
-          },
-          "definition": "label_values(rlm_feature_issued, name)",
-          "hide": 0,
-          "includeAll": true,
-          "label": "Feature",
-          "multi": true,
-          "name": "feature",
-          "options": [],
-          "query": {
-            "query": "label_values(rlm_feature_issued, name)",
-            "refId": "StandardVariableQuery"
-          },
-          "refresh": 1,
-          "regex": "",
-          "skipUrlSync": false,
-          "sort": 0,
-          "type": "query"
-        }
-      ]
-    },
-    "time": {
-      "from": "now-6h",
-      "to": "now"
-    },
-    "timepicker": {},
-    "timezone": "",
-    "title": "RLM Expiration Dates",
-    "uid": "OQfoq4h4z",
-    "version": 6,
-    "weekStart": ""
-  }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "RLM Expiration Dates",
+  "uid": "OQfoq4h4z",
+  "version": 3,
+  "weekStart": ""
+}
