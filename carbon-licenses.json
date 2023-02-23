@@ -139,7 +139,7 @@
             "uid": "prometheus"
           },
           "editorMode": "code",
-          "expr": "sum(independent_license_used_users) by (name)",
+          "expr": "sum(independent_license_used_user) by (name)",
           "hide": false,
           "legendFormat": "__auto",
           "range": true,
