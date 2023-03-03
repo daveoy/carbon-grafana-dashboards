@@ -45,7 +45,7 @@
       "type": "row"
     },
     {
-      "datasource": "",
+      "datasource": "thanos",
       "fieldConfig": {
         "defaults": {
           "custom": {}

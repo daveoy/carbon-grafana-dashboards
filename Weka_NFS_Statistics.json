@@ -30,7 +30,7 @@
   ],
   "panels": [
     {
-      "datasource": "",
+      "datasource": "thanos",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -57,7 +57,7 @@
     },
     {
       "collapsed": false,
-      "datasource": "",
+      "datasource": "thanos",
       "gridPos": {
         "h": 1,
         "w": 24,

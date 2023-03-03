@@ -226,7 +226,7 @@
       }
     },
     {
-      "datasource": "",
+      "datasource": "thanos",
       "fieldConfig": {
         "defaults": {
           "custom": {}
