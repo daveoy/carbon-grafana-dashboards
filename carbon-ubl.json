@@ -31,7 +31,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "thanos"
       },
       "fieldConfig": {
         "defaults": {
@@ -115,7 +115,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "thanos"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -154,7 +154,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "prometheus"
+          "uid": "thanos"
         },
         "definition": "label_values(carbon_ubl,feature)",
         "hide": 0,
@@ -184,7 +184,7 @@
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "prometheus"
+          "uid": "thanos"
         },
         "definition": "label_values(carbon_ubl,entitlement)",
         "hide": 0,

@@ -30,7 +30,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "thanos"
       },
       "fieldConfig": {
         "defaults": {
@@ -113,7 +113,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "thanos"
           },
           "editorMode": "code",
           "expr": "sum(flexlm_feature_used_users) by (name)",
@@ -124,7 +124,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "thanos"
           },
           "editorMode": "code",
           "expr": "sum(rlm_feature_used_users) by (name)",
@@ -136,7 +136,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "thanos"
           },
           "editorMode": "code",
           "expr": "sum(independent_license_used_user) by (name)",

@@ -34,7 +34,7 @@
         "collapsed": false,
         "datasource": {
           "type": "prometheus",
-          "uid": "prometheus"
+          "uid": "thanos"
         },
         "gridPos": {
           "h": 1,
@@ -48,7 +48,7 @@
           {
             "datasource": {
               "type": "prometheus",
-              "uid": "prometheus"
+              "uid": "thanos"
             },
             "refId": "A"
           }
@@ -59,7 +59,7 @@
       {
         "datasource": {
           "type": "prometheus",
-          "uid": "prometheus"
+          "uid": "thanos"
         },
         "fieldConfig": {
           "defaults": {
@@ -137,7 +137,7 @@
           {
             "datasource": {
               "type": "prometheus",
-              "uid": "prometheus"
+              "uid": "thanos"
             },
             "expr": "min(flexlm_server_status{app=\"[[app]]\"})",
             "format": "time_series",
@@ -157,7 +157,7 @@
         "dashes": false,
         "datasource": {
           "type": "prometheus",
-          "uid": "prometheus"
+          "uid": "thanos"
         },
         "fill": 1,
         "fillGradient": 0,
@@ -201,7 +201,7 @@
           {
             "datasource": {
               "type": "prometheus",
-              "uid": "prometheus"
+              "uid": "thanos"
             },
             "expr": "flexlm_server_status{app=\"[[app]]\"}",
             "format": "time_series",
@@ -249,7 +249,7 @@
         "columns": [],
         "datasource": {
           "type": "prometheus",
-          "uid": "prometheus"
+          "uid": "thanos"
         },
         "fontSize": "100%",
         "gridPos": {
@@ -387,7 +387,7 @@
           {
             "datasource": {
               "type": "prometheus",
-              "uid": "prometheus"
+              "uid": "thanos"
             },
             "expr": "flexlm_server_status{app=\"[[app]]\"}",
             "format": "table",
@@ -405,7 +405,7 @@
         "columns": [],
         "datasource": {
           "type": "prometheus",
-          "uid": "prometheus"
+          "uid": "thanos"
         },
         "fontSize": "100%",
         "gridPos": {
@@ -492,7 +492,7 @@
           {
             "datasource": {
               "type": "prometheus",
-              "uid": "prometheus"
+              "uid": "thanos"
             },
             "expr": "flexlm_vendor_status{app=\"[[app]]\"}",
             "format": "table",
@@ -510,7 +510,7 @@
         "collapsed": false,
         "datasource": {
           "type": "prometheus",
-          "uid": "prometheus"
+          "uid": "thanos"
         },
         "gridPos": {
           "h": 1,
@@ -524,7 +524,7 @@
           {
             "datasource": {
               "type": "prometheus",
-              "uid": "prometheus"
+              "uid": "thanos"
             },
             "refId": "A"
           }
@@ -535,7 +535,7 @@
       {
         "datasource": {
           "type": "prometheus",
-          "uid": "prometheus"
+          "uid": "thanos"
         },
         "description": "",
         "fieldConfig": {
@@ -761,7 +761,7 @@
           {
             "datasource": {
               "type": "prometheus",
-              "uid": "prometheus"
+              "uid": "thanos"
             },
             "expr": "flexlm_feature_expiration_seconds{app=\"[[app]]\"} * 1000",
             "format": "table",
@@ -784,7 +784,7 @@
         "collapsed": false,
         "datasource": {
           "type": "prometheus",
-          "uid": "prometheus"
+          "uid": "thanos"
         },
         "gridPos": {
           "h": 1,
@@ -799,7 +799,7 @@
           {
             "datasource": {
               "type": "prometheus",
-              "uid": "prometheus"
+              "uid": "thanos"
             },
             "refId": "A"
           }
@@ -814,7 +814,7 @@
         "dashes": false,
         "datasource": {
           "type": "prometheus",
-          "uid": "prometheus"
+          "uid": "thanos"
         },
         "fill": 1,
         "fillGradient": 0,
@@ -856,7 +856,7 @@
           {
             "datasource": {
               "type": "prometheus",
-              "uid": "prometheus"
+              "uid": "thanos"
             },
             "expr": "flexlm_feature_used{app=\"[[app]]\", name=\"[[feature]]\"}",
             "format": "time_series",
@@ -868,7 +868,7 @@
           {
             "datasource": {
               "type": "prometheus",
-              "uid": "prometheus"
+              "uid": "thanos"
             },
             "expr": "flexlm_feature_issued{app=\"[[app]]\", name=\"[[feature]]\"}",
             "format": "time_series",
@@ -881,7 +881,7 @@
           {
             "datasource": {
               "type": "prometheus",
-              "uid": "prometheus"
+              "uid": "thanos"
             },
             "expr": "sum(flexlm_feature_reserved_groups{app=\"[[app]]\", name=\"[[feature]]\"})",
             "format": "time_series",
@@ -932,7 +932,7 @@
       {
         "datasource": {
           "type": "prometheus",
-          "uid": "prometheus"
+          "uid": "thanos"
         },
         "fieldConfig": {
           "defaults": {
@@ -982,7 +982,7 @@
           {
             "datasource": {
               "type": "prometheus",
-              "uid": "prometheus"
+              "uid": "thanos"
             },
             "expr": "sum(flexlm_feature_used_users{app=\"[[app]]\",name=\"[[feature]]\"}) by (user)",
             "format": "time_series",
@@ -999,7 +999,7 @@
       {
         "datasource": {
           "type": "prometheus",
-          "uid": "prometheus"
+          "uid": "thanos"
         },
         "fieldConfig": {
           "defaults": {
@@ -1049,7 +1049,7 @@
           {
             "datasource": {
               "type": "prometheus",
-              "uid": "prometheus"
+              "uid": "thanos"
             },
             "expr": "sum(flexlm_feature_reserved_groups{app=\"[[app]]\",name=\"[[feature]]\"}) by (group)",
             "format": "time_series",
@@ -1081,7 +1081,7 @@
           },
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "thanos"
           },
           "definition": "",
           "hide": 0,
@@ -1111,7 +1111,7 @@
           },
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "thanos"
           },
           "definition": "",
           "hide": 0,
@@ -1141,7 +1141,7 @@
           },
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "thanos"
           },
           "definition": "",
           "hide": 2,
@@ -1171,7 +1171,7 @@
           },
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "thanos"
           },
           "definition": "",
           "hide": 2,
@@ -1201,7 +1201,7 @@
           },
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "thanos"
           },
           "definition": "",
           "hide": 2,
@@ -1232,7 +1232,7 @@
           },
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "thanos"
           },
           "definition": "",
           "hide": 2,
@@ -1263,7 +1263,7 @@
           },
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "thanos"
           },
           "definition": "",
           "hide": 2,
@@ -1293,7 +1293,7 @@
           },
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "thanos"
           },
           "definition": "",
           "hide": 2,

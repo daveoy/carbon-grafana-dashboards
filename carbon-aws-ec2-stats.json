@@ -31,7 +31,7 @@
       {
         "datasource": {
           "type": "prometheus",
-          "uid": "prometheus"
+          "uid": "thanos"
         },
         "description": "",
         "fieldConfig": {
@@ -90,7 +90,7 @@
           {
             "datasource": {
               "type": "prometheus",
-              "uid": "prometheus"
+              "uid": "thanos"
             },
             "editorMode": "code",
             "exemplar": false,
@@ -139,7 +139,7 @@
       {
         "datasource": {
           "type": "prometheus",
-          "uid": "prometheus"
+          "uid": "thanos"
         },
         "description": "",
         "fieldConfig": {
@@ -198,7 +198,7 @@
           {
             "datasource": {
               "type": "prometheus",
-              "uid": "prometheus"
+              "uid": "thanos"
             },
             "editorMode": "code",
             "exemplar": false,
