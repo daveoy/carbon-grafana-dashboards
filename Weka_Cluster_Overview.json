@@ -56,7 +56,7 @@
       "type": "row"
     },
     {
-      "datasource": "thanos",
+      "datasource": "weka",
       "fieldConfig": {
         "defaults": {
           "custom": {}

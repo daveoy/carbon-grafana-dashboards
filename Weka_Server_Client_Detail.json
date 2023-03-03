@@ -33,7 +33,7 @@
   ],
   "panels": [
     {
-      "datasource": "thanos",
+      "datasource": "weka",
       "fieldConfig": {
         "defaults": {
           "custom": {}

@@ -30,7 +30,7 @@
   ],
   "panels": [
     {
-      "datasource": "thanos",
+      "datasource": "weka",
       "fieldConfig": {
         "defaults": {
           "custom": {}
@@ -57,7 +57,7 @@
     },
     {
       "collapsed": false,
-      "datasource": "thanos",
+      "datasource": "weka",
       "gridPos": {
         "h": 1,
         "w": 24,
