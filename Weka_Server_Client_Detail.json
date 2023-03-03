@@ -3,20 +3,28 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
         "type": "dashboard"
       }
     ]
   },
   "description": "Weka Server/Client Details",
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "iteration": 1607779633422,
   "links": [
     {
       "$$hashKey": "object:252",
@@ -31,14 +39,12 @@
       "type": "dashboards"
     }
   ],
+  "liveNow": false,
   "panels": [
     {
-      "datasource": "weka",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PB4928806AA4C0C1F"
       },
       "gridPos": {
         "h": 2,
@@ -51,16 +57,24 @@
         "content": "<img src=/public/img/weka/WekaColor.svg>",
         "mode": "html"
       },
-      "pluginVersion": "7.3.4",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "",
+      "pluginVersion": "9.1.7",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PB4928806AA4C0C1F"
+          },
+          "refId": "A"
+        }
+      ],
       "transparent": true,
       "type": "text"
     },
     {
       "collapsed": false,
-      "datasource": "$weka_datasource",
+      "datasource": {
+        "uid": "$weka_datasource"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -69,6 +83,14 @@
       },
       "id": 2,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "uid": "$weka_datasource"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Client Overview",
       "type": "row"
     },
@@ -77,11 +99,12 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$weka_datasource",
+      "datasource": {
+        "uid": "$weka_datasource"
+      },
       "description": "Total Operations (io and metadata)",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -112,7 +135,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.4",
+      "pluginVersion": "9.1.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -122,6 +145,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$weka_datasource"
+          },
           "expr": "sum (weka_stats{cluster=\"$cluster\",host_name=\"$host_name\",category=\"ops\",stat=\"OPS\"})",
           "interval": "",
           "legendFormat": "Operations per sec",
@@ -129,9 +155,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Total Client OPS",
       "tooltip": {
         "shared": true,
@@ -140,33 +164,25 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "ops",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -174,10 +190,11 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$weka_datasource",
+      "datasource": {
+        "uid": "$weka_datasource"
+      },
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -208,7 +225,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.4",
+      "pluginVersion": "9.1.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -218,6 +235,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$weka_datasource"
+          },
           "expr": "sum (weka_stats{cluster=\"$cluster\",host_name=\"$host_name\",category=\"ops\",stat=\"THROUGHPUT\"})",
           "interval": "",
           "legendFormat": "throughput",
@@ -225,9 +245,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Total Client Throughput",
       "tooltip": {
         "shared": true,
@@ -236,34 +254,25 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
-          "decimals": null,
           "format": "Bps",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -271,11 +280,12 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$weka_datasource",
+      "datasource": {
+        "uid": "$weka_datasource"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -306,7 +316,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.4",
+      "pluginVersion": "9.1.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -316,18 +326,27 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$weka_datasource"
+          },
           "expr": "sum (weka_stats{cluster=\"$cluster\",host_name=\"$host_name\",category=\"ops\",stat=\"READS\"})",
           "interval": "",
           "legendFormat": "reads",
           "refId": "A"
         },
         {
+          "datasource": {
+            "uid": "$weka_datasource"
+          },
           "expr": "sum (weka_stats{cluster=\"$cluster\",host_name=\"$host_name\",category=\"ops\",stat=\"WRITES\"})",
           "interval": "",
           "legendFormat": "writes",
           "refId": "B"
         },
         {
+          "datasource": {
+            "uid": "$weka_datasource"
+          },
           "expr": "sum (weka_stats{cluster=\"$cluster\",host_name=\"$host_name\",category=\"ops\",stat=\"OPS\"}) - sum (weka_stats{cluster=\"$cluster\",host_name=\"$host_name\",category=\"ops\",stat=\"READS\"}) - sum(weka_stats{cluster=\"$cluster\",host_name=\"$host_name\",category=\"ops\",stat=\"WRITES\"})",
           "interval": "",
           "legendFormat": "metadata ops",
@@ -335,9 +354,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "OPS Details",
       "tooltip": {
         "shared": true,
@@ -346,33 +363,25 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "ops",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -380,10 +389,11 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$weka_datasource",
+      "datasource": {
+        "uid": "$weka_datasource"
+      },
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -414,7 +424,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.4",
+      "pluginVersion": "9.1.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -424,12 +434,18 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$weka_datasource"
+          },
           "expr": "sum (weka_stats{cluster=\"$cluster\",host_name=\"$host_name\",category=\"ops\",stat=\"READ_BYTES\"})",
           "interval": "",
           "legendFormat": "read bytes",
           "refId": "A"
         },
         {
+          "datasource": {
+            "uid": "$weka_datasource"
+          },
           "expr": "sum (weka_stats{cluster=\"$cluster\",host_name=\"$host_name\",category=\"ops\",stat=\"WRITE_BYTES\"})",
           "interval": "",
           "legendFormat": "write bytes",
@@ -437,9 +453,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Throughput Details",
       "tooltip": {
         "shared": true,
@@ -448,33 +462,25 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "Bps",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -482,10 +488,11 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$weka_datasource",
+      "datasource": {
+        "uid": "$weka_datasource"
+      },
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -516,7 +523,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.4",
+      "pluginVersion": "9.1.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -526,12 +533,18 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$weka_datasource"
+          },
           "expr": "avg (weka_stats{cluster=\"$cluster\",host_name=\"$host_name\",category=\"ops\",stat=\"READ_LATENCY\"})",
           "interval": "",
           "legendFormat": "read latency",
           "refId": "A"
         },
         {
+          "datasource": {
+            "uid": "$weka_datasource"
+          },
           "expr": "avg (weka_stats{cluster=\"$cluster\",host_name=\"$host_name\",category=\"ops\",stat=\"WRITE_LATENCY\"})",
           "interval": "",
           "legendFormat": "write latency",
@@ -539,9 +552,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Average Latency",
       "tooltip": {
         "shared": true,
@@ -550,33 +561,25 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "format": "µs",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -584,10 +587,11 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$weka_datasource",
+      "datasource": {
+        "uid": "$weka_datasource"
+      },
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": []
         },
         "overrides": []
@@ -618,7 +622,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.4",
+      "pluginVersion": "9.1.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -628,6 +632,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$weka_datasource"
+          },
           "expr": "avg (weka_stats{cluster=\"$cluster\",host_name=\"$host_name\",category=\"cpu\",stat=\"CPU_UTILIZATION\"})",
           "interval": "",
           "legendFormat": "% CPU",
@@ -635,9 +642,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "CPU Utilization",
       "tooltip": {
         "shared": true,
@@ -646,17 +651,13 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
-          "decimals": null,
           "format": "percent",
-          "label": null,
           "logBase": 1,
           "max": "100",
           "min": "0",
@@ -664,23 +665,16 @@
         },
         {
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "cards": {
-        "cardPadding": null,
-        "cardRound": null
-      },
+      "cards": {},
       "color": {
         "cardColor": "#b4ff00",
         "colorScale": "sqrt",
@@ -689,10 +683,21 @@
         "mode": "spectrum"
       },
       "dataFormat": "tsbuckets",
-      "datasource": "$weka_datasource",
+      "datasource": {
+        "uid": "$weka_datasource"
+      },
       "fieldConfig": {
         "defaults": {
-          "custom": {}
+          "custom": {
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "scaleDistribution": {
+              "type": "linear"
+            }
+          }
         },
         "overrides": []
       },
@@ -710,10 +715,50 @@
       "legend": {
         "show": true
       },
-      "pluginVersion": "7.1.1",
+      "options": {
+        "calculate": false,
+        "calculation": {},
+        "cellGap": 2,
+        "cellValues": {},
+        "color": {
+          "exponent": 0.5,
+          "fill": "#b4ff00",
+          "mode": "scheme",
+          "reverse": false,
+          "scale": "exponential",
+          "scheme": "Purples",
+          "steps": 128
+        },
+        "exemplars": {
+          "color": "rgba(255,0,255,0.7)"
+        },
+        "filterValues": {
+          "le": 1e-9
+        },
+        "legend": {
+          "show": true
+        },
+        "rowsFrame": {
+          "layout": "auto"
+        },
+        "showValue": "never",
+        "tooltip": {
+          "show": true,
+          "yHistogram": false
+        },
+        "yAxis": {
+          "axisPlacement": "left",
+          "reverse": false,
+          "unit": "short"
+        }
+      },
+      "pluginVersion": "9.1.7",
       "reverseYBuckets": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$weka_datasource"
+          },
           "expr": "sum by (le) (weka_blocksize_bucket{cluster=\"$cluster\",host_name=\"$host_name\",category=\"ops_driver\",stat=\"READ_SIZES\"})",
           "format": "time_series",
           "interval": "",
@@ -721,17 +766,21 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "uid": "$weka_datasource"
+          },
           "expr": "sum by (le) (weka_blocksize_bucket{cluster=\"$cluster\",host_name=\"$host_name\",category=\"ops_driver\",stat=\"WRITE_SIZES\"})",
           "interval": "",
           "legendFormat": "{{le}} writes",
           "refId": "B"
         },
         {
+          "datasource": {
+            "uid": "$weka_datasource"
+          },
           "refId": "C"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "io blocksize distribution heatmap",
       "tooltip": {
         "show": true,
@@ -741,32 +790,20 @@
       "xAxis": {
         "show": true
       },
-      "xBucketNumber": null,
-      "xBucketSize": null,
       "yAxis": {
-        "decimals": null,
         "format": "short",
         "logBase": 1,
-        "max": null,
-        "min": null,
-        "show": true,
-        "splitFactor": null
+        "show": true
       },
-      "yBucketBound": "auto",
-      "yBucketNumber": null,
-      "yBucketSize": null
+      "yBucketBound": "auto"
     },
     {
       "aliasColors": {},
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$weka_datasource",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
+      "datasource": {
+        "uid": "$weka_datasource"
       },
       "fill": 1,
       "fillGradient": 0,
@@ -795,7 +832,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.3.4",
+      "pluginVersion": "9.1.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -805,12 +842,18 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$weka_datasource"
+          },
           "expr": "sum by (le) (weka_blocksize_bucket{cluster=\"$cluster\",host_name=\"$host_name\",category=\"ops_driver\",stat=\"READ_SIZES\"})",
           "interval": "",
           "legendFormat": "{{le}} reads",
           "refId": "A"
         },
         {
+          "datasource": {
+            "uid": "$weka_datasource"
+          },
           "expr": "sum by (le) (weka_blocksize_bucket{cluster=\"$cluster\",host_name=\"$host_name\",category=\"ops_driver\",stat=\"WRITE_SIZES\"})",
           "interval": "",
           "legendFormat": "{{le}} writes",
@@ -818,9 +861,7 @@
         }
       ],
       "thresholds": [],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "io blocksize distribution",
       "tooltip": {
         "shared": true,
@@ -829,9 +870,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -839,30 +878,26 @@
         {
           "$$hashKey": "object:147",
           "format": "iops",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:148",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": false
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
       "collapsed": true,
-      "datasource": "$weka_datasource",
+      "datasource": {
+        "uid": "$weka_datasource"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -876,7 +911,9 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "$weka_datasource",
+          "datasource": {
+            "uid": "$weka_datasource"
+          },
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -921,6 +958,9 @@
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "uid": "$weka_datasource"
+              },
               "expr": "weka_stats{cluster=\"$cluster\",host_name=\"$host_name\",category=\"ops\",stat=\"READS\"}",
               "interval": "",
               "legendFormat": "{{node_id}} reads",
@@ -928,9 +968,7 @@
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Read Ops Details",
           "tooltip": {
             "shared": true,
@@ -939,33 +977,25 @@
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
           "yaxes": [
             {
               "format": "ops",
-              "label": null,
               "logBase": 1,
-              "max": null,
               "min": "0",
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
@@ -973,7 +1003,9 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "$weka_datasource",
+          "datasource": {
+            "uid": "$weka_datasource"
+          },
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -1018,6 +1050,9 @@
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "uid": "$weka_datasource"
+              },
               "expr": "weka_stats{cluster=\"$cluster\",host_name=\"$host_name\",category=\"ops\",stat=\"WRITES\"}",
               "interval": "",
               "legendFormat": "{{node_id}} writes",
@@ -1025,9 +1060,7 @@
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Write OPS Details",
           "tooltip": {
             "shared": true,
@@ -1036,33 +1069,25 @@
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
           "yaxes": [
             {
               "format": "ops",
-              "label": null,
               "logBase": 1,
-              "max": null,
               "min": "0",
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
@@ -1070,7 +1095,9 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "$weka_datasource",
+          "datasource": {
+            "uid": "$weka_datasource"
+          },
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -1115,6 +1142,9 @@
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "uid": "$weka_datasource"
+              },
               "expr": "weka_stats{cluster=\"$cluster\",host_name=\"$host_name\",category=\"ops\",stat=\"READ_BYTES\"}",
               "interval": "",
               "legendFormat": "{{node_id}} reads",
@@ -1122,9 +1152,7 @@
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Read Throughput Details",
           "tooltip": {
             "shared": true,
@@ -1133,33 +1161,25 @@
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
           "yaxes": [
             {
               "format": "Bps",
-              "label": null,
               "logBase": 1,
-              "max": null,
               "min": "0",
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
@@ -1167,7 +1187,9 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "$weka_datasource",
+          "datasource": {
+            "uid": "$weka_datasource"
+          },
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -1212,6 +1234,9 @@
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "uid": "$weka_datasource"
+              },
               "expr": "weka_stats{cluster=\"$cluster\",host_name=\"$host_name\",category=\"ops\",stat=\"WRITE_BYTES\"}",
               "interval": "",
               "legendFormat": "{{node_id}} writes",
@@ -1219,9 +1244,7 @@
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Write Throughput Details",
           "tooltip": {
             "shared": true,
@@ -1230,33 +1253,25 @@
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
           "yaxes": [
             {
               "format": "Bps",
-              "label": null,
               "logBase": 1,
-              "max": null,
               "min": "0",
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
@@ -1264,7 +1279,9 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "$weka_datasource",
+          "datasource": {
+            "uid": "$weka_datasource"
+          },
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -1309,6 +1326,9 @@
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "uid": "$weka_datasource"
+              },
               "expr": "weka_stats{cluster=\"$cluster\",host_name=\"$host_name\",category=\"ops\",stat=\"READ_LATENCY\"}",
               "interval": "",
               "legendFormat": "{{node_id}} reads",
@@ -1316,9 +1336,7 @@
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Read Latency Details",
           "tooltip": {
             "shared": true,
@@ -1327,33 +1345,25 @@
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
           "yaxes": [
             {
               "format": "µs",
-              "label": null,
               "logBase": 1,
-              "max": null,
               "min": "0",
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
@@ -1361,7 +1371,9 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "$weka_datasource",
+          "datasource": {
+            "uid": "$weka_datasource"
+          },
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -1407,6 +1419,9 @@
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "uid": "$weka_datasource"
+              },
               "expr": "weka_stats{cluster=\"$cluster\",host_name=\"$host_name\",category=\"ops\",stat=\"WRITE_LATENCY\"}",
               "interval": "",
               "legendFormat": "{{node_id}} writes",
@@ -1414,9 +1429,7 @@
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Write Latency Details",
           "tooltip": {
             "shared": true,
@@ -1425,33 +1438,25 @@
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
           "yaxes": [
             {
               "format": "µs",
-              "label": null,
               "logBase": 1,
-              "max": null,
               "min": "0",
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": true
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
@@ -1459,7 +1464,9 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "$weka_datasource",
+          "datasource": {
+            "uid": "$weka_datasource"
+          },
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -1505,6 +1512,9 @@
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "uid": "$weka_datasource"
+              },
               "expr": "sum by (node_id) ( weka_stats{cluster=\"$cluster\",host_name=\"$host_name\",category=\"ops\",stat=\"OPS\"} ) - sum by (node_id)( weka_stats{cluster=\"$cluster\",host_name=\"$host_name\",category=\"ops\",stat=\"READS\"} )- sum by (node_id)( weka_stats{cluster=\"$cluster\",host_name=\"$host_name\",category=\"ops\",stat=\"WRITES\"} )",
               "interval": "",
               "legendFormat": "{{node_id}} metadata ops",
@@ -1512,9 +1522,7 @@
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Metadata OPS Details",
           "tooltip": {
             "shared": true,
@@ -1523,33 +1531,25 @@
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
           "yaxes": [
             {
               "format": "ops",
-              "label": null,
               "logBase": 1,
-              "max": null,
               "min": "0",
               "show": true
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": false
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
         },
         {
@@ -1557,7 +1557,9 @@
           "bars": false,
           "dashLength": 10,
           "dashes": false,
-          "datasource": "$weka_datasource",
+          "datasource": {
+            "uid": "$weka_datasource"
+          },
           "description": "",
           "fieldConfig": {
             "defaults": {
@@ -1603,6 +1605,9 @@
           "steppedLine": false,
           "targets": [
             {
+              "datasource": {
+                "uid": "$weka_datasource"
+              },
               "expr": "weka_stats{cluster=\"$cluster\",host_name=\"$host_name\",category=\"cpu\",stat=\"CPU_UTILIZATION\"}",
               "interval": "",
               "legendFormat": "{{node_id}} {{node_role}}",
@@ -1610,9 +1615,7 @@
             }
           ],
           "thresholds": [],
-          "timeFrom": null,
           "timeRegions": [],
-          "timeShift": null,
           "title": "Cpu Utilization Details",
           "tooltip": {
             "shared": true,
@@ -1621,17 +1624,13 @@
           },
           "type": "graph",
           "xaxis": {
-            "buckets": null,
             "mode": "time",
-            "name": null,
             "show": true,
             "values": []
           },
           "yaxes": [
             {
-              "decimals": null,
               "format": "percent",
-              "label": null,
               "logBase": 1,
               "max": "100",
               "min": "0",
@@ -1639,17 +1638,21 @@
             },
             {
               "format": "short",
-              "label": null,
               "logBase": 1,
-              "max": null,
-              "min": null,
               "show": false
             }
           ],
           "yaxis": {
-            "align": false,
-            "alignLevel": null
+            "align": false
           }
+        }
+      ],
+      "targets": [
+        {
+          "datasource": {
+            "uid": "$weka_datasource"
+          },
+          "refId": "A"
         }
       ],
       "title": "Per Node Details",
@@ -1657,7 +1660,7 @@
     }
   ],
   "refresh": "1m",
-  "schemaVersion": 26,
+  "schemaVersion": 37,
   "style": "dark",
   "tags": [
     "#weka"
@@ -1666,11 +1669,12 @@
     "list": [
       {
         "current": {
+          "selected": true,
+          "text": "weka",
+          "value": "weka"
         },
-        "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": null,
         "multi": false,
         "name": "weka_datasource",
         "options": [],
@@ -1682,49 +1686,57 @@
         "type": "datasource"
       },
       {
-        "allValue": null,
         "current": {
+          "selected": false,
+          "text": "e2a-weka-000",
+          "value": "e2a-weka-000"
         },
-        "datasource": "$weka_datasource",
+        "datasource": {
+          "uid": "$weka_datasource"
+        },
         "definition": "label_values(weka_info,cluster)",
-        "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": null,
         "multi": false,
         "name": "cluster",
         "options": [],
-        "query": "label_values(weka_info,cluster)",
+        "query": {
+          "query": "label_values(weka_info,cluster)",
+          "refId": "thanos-cluster-Variable-Query"
+        },
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
       },
       {
-        "allValue": null,
         "current": {
+          "selected": false,
+          "text": "aws-e2a-flame-prjsrv",
+          "value": "aws-e2a-flame-prjsrv"
         },
-        "datasource": "$weka_datasource",
+        "datasource": {
+          "uid": "$weka_datasource"
+        },
         "definition": "label_values(weka_stats{cluster=\"$cluster\"},host_name)",
-        "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": null,
         "multi": false,
         "name": "host_name",
         "options": [],
-        "query": "label_values(weka_stats{cluster=\"$cluster\"},host_name)",
+        "query": {
+          "query": "label_values(weka_stats{cluster=\"$cluster\"},host_name)",
+          "refId": "thanos-host_name-Variable-Query"
+        },
         "refresh": 1,
         "regex": "",
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -1751,5 +1763,6 @@
   "timezone": "",
   "title": "Weka Server/Client Detail",
   "uid": "WekaServerDetail",
-  "version": 2
+  "version": 1,
+  "weekStart": ""
 }

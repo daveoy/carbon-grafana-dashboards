@@ -3,20 +3,28 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
         "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
+        },
         "type": "dashboard"
       }
     ]
   },
   "description": "Weka Server/Client Details",
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "iteration": 1616799704067,
   "links": [
     {
       "$$hashKey": "object:252",
@@ -31,9 +39,13 @@
       "type": "dashboards"
     }
   ],
+  "liveNow": false,
   "panels": [
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PC96415006F908B67"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -41,16 +53,21 @@
         "y": 0
       },
       "id": 32,
-      "title": "",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PC96415006F908B67"
+          },
+          "refId": "A"
+        }
+      ],
       "type": "row"
     },
     {
-      "datasource": "weka",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PB4928806AA4C0C1F"
       },
       "gridPos": {
         "h": 2,
@@ -63,16 +80,24 @@
         "content": "<img src=/public/img/weka/WekaColor.svg>",
         "mode": "html"
       },
-      "pluginVersion": "7.4.5",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "",
+      "pluginVersion": "9.1.7",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PB4928806AA4C0C1F"
+          },
+          "refId": "A"
+        }
+      ],
       "transparent": true,
       "type": "text"
     },
     {
       "collapsed": false,
-      "datasource": "$weka_datasource",
+      "datasource": {
+        "uid": "$weka_datasource"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -81,6 +106,14 @@
       },
       "id": 2,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "uid": "$weka_datasource"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Filesystem Flash Utilization Details",
       "type": "row"
     },
@@ -89,10 +122,12 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${weka_datasource}"
+      },
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "unit": "percent"
         },
         "overrides": []
@@ -125,7 +160,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.5",
+      "pluginVersion": "9.1.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -135,6 +170,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${weka_datasource}"
+          },
           "expr": "topk( 5, weka_fs{cluster=\"$cluster\", stat=\"ssd_percent_used\"})",
           "interval": "",
           "legendFormat": "{{name}}",
@@ -152,9 +191,7 @@
           "yaxis": "left"
         }
       ],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Top 5 Filesystems by % SSD Use",
       "tooltip": {
         "shared": false,
@@ -163,36 +200,27 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "$$hashKey": "object:67",
-          "decimals": null,
           "format": "percent",
-          "label": null,
           "logBase": 1,
           "max": "100",
-          "min": null,
           "show": true
         },
         {
           "$$hashKey": "object:68",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -200,10 +228,11 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$weka_datasource",
+      "datasource": {
+        "uid": "$weka_datasource"
+      },
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": [],
           "unit": "percent"
         },
@@ -237,7 +266,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.5",
+      "pluginVersion": "9.1.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -247,6 +276,9 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$weka_datasource"
+          },
           "expr": "weka_fs{cluster=\"$cluster\", name=\"$Filesystem\", stat=\"ssd_percent_used\"}",
           "interval": "",
           "legendFormat": "SSD Used %",
@@ -264,9 +296,7 @@
           "yaxis": "left"
         }
       ],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "$Filesystem SSD Usage %",
       "tooltip": {
         "shared": true,
@@ -275,18 +305,14 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "$$hashKey": "object:495",
-          "decimals": null,
           "format": "percent",
-          "label": null,
           "logBase": 1,
           "max": "100",
           "min": "0",
@@ -295,16 +321,12 @@
         {
           "$$hashKey": "object:496",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
@@ -312,11 +334,12 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": "$weka_datasource",
+      "datasource": {
+        "uid": "$weka_datasource"
+      },
       "description": "SSD occupancy",
       "fieldConfig": {
         "defaults": {
-          "custom": {},
           "links": [],
           "unit": "bytes"
         },
@@ -349,7 +372,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.5",
+      "pluginVersion": "9.1.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -359,12 +382,18 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "uid": "$weka_datasource"
+          },
           "expr": "weka_fs{cluster=\"$cluster\", name=\"$Filesystem\", stat=\"used_ssd\"}",
           "interval": "",
           "legendFormat": "SSD Used",
           "refId": "A"
         },
         {
+          "datasource": {
+            "uid": "$weka_datasource"
+          },
           "expr": "weka_fs{cluster=\"$cluster\", name=\"$Filesystem\", stat=\"available_ssd\"}",
           "hide": false,
           "interval": "",
@@ -382,9 +411,7 @@
           "yaxis": "left"
         }
       ],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "$Filesystem SSD Occupancy",
       "tooltip": {
         "shared": false,
@@ -393,9 +420,7 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
@@ -403,37 +428,35 @@
         {
           "$$hashKey": "object:315",
           "format": "bytes",
-          "label": null,
           "logBase": 1,
-          "max": null,
           "min": "0",
           "show": true
         },
         {
           "$$hashKey": "object:316",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     },
     {
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PB4928806AA4C0C1F"
+      },
       "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
             "mode": "thresholds"
           },
-          "custom": {},
           "mappings": [],
+          "max": 100,
+          "min": 0,
           "thresholds": {
             "mode": "absolute",
             "steps": [
@@ -473,9 +496,13 @@
         "text": {},
         "textMode": "auto"
       },
-      "pluginVersion": "7.4.5",
+      "pluginVersion": "9.1.7",
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PB4928806AA4C0C1F"
+          },
           "expr": "abs(predict_linear(weka_fs{cluster=\"$cluster\",name=\"$Filesystem\",stat=\"ssd_percent_used\"}[7d], 86400*30)) < 100",
           "instant": false,
           "interval": "",
@@ -483,6 +510,10 @@
           "refId": "A"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PB4928806AA4C0C1F"
+          },
           "expr": "abs(predict_linear(weka_fs{cluster=\"$cluster\",name=\"$Filesystem\",stat=\"ssd_percent_used\"}[7d], 86400*7)) < 100",
           "hide": false,
           "instant": false,
@@ -491,6 +522,10 @@
           "refId": "B"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PB4928806AA4C0C1F"
+          },
           "expr": "abs(predict_linear(weka_fs{cluster=\"$cluster\",name=\"$Filesystem\",stat=\"ssd_percent_used\"}[7d], 86400)) < 100",
           "hide": false,
           "instant": false,
@@ -499,6 +534,10 @@
           "refId": "D"
         },
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PB4928806AA4C0C1F"
+          },
           "expr": "weka_fs{cluster=\"$cluster\",name=\"$Filesystem\",stat=\"ssd_percent_used\"}",
           "hide": false,
           "instant": false,
@@ -512,7 +551,10 @@
     },
     {
       "collapsed": false,
-      "datasource": null,
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PC96415006F908B67"
+      },
       "gridPos": {
         "h": 1,
         "w": 24,
@@ -521,6 +563,15 @@
       },
       "id": 38,
       "panels": [],
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PC96415006F908B67"
+          },
+          "refId": "A"
+        }
+      ],
       "title": "Total Capacity (Flash + Object)",
       "type": "row"
     },
@@ -529,12 +580,9 @@
       "bars": false,
       "dashLength": 10,
       "dashes": false,
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
+      "datasource": {
+        "type": "prometheus",
+        "uid": "${weka_datasource}"
       },
       "fill": 0,
       "fillGradient": 0,
@@ -564,7 +612,7 @@
         "alertThreshold": true
       },
       "percentage": false,
-      "pluginVersion": "7.4.5",
+      "pluginVersion": "9.1.7",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -574,6 +622,10 @@
       "steppedLine": false,
       "targets": [
         {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${weka_datasource}"
+          },
           "expr": "topk(5, weka_fs{cluster=\"$cluster\",stat=\"total_percent_used\"})",
           "interval": "",
           "legendFormat": "{{name}}",
@@ -591,9 +643,7 @@
           "yaxis": "left"
         }
       ],
-      "timeFrom": null,
       "timeRegions": [],
-      "timeShift": null,
       "title": "Top 5 Filesystems by % Full (total capacity)",
       "tooltip": {
         "shared": false,
@@ -602,16 +652,13 @@
       },
       "type": "graph",
       "xaxis": {
-        "buckets": null,
         "mode": "time",
-        "name": null,
         "show": true,
         "values": []
       },
       "yaxes": [
         {
           "$$hashKey": "object:984",
-          "decimals": null,
           "format": "short",
           "label": "",
           "logBase": 1,
@@ -622,21 +669,17 @@
         {
           "$$hashKey": "object:985",
           "format": "short",
-          "label": null,
           "logBase": 1,
-          "max": null,
-          "min": null,
           "show": true
         }
       ],
       "yaxis": {
-        "align": false,
-        "alignLevel": null
+        "align": false
       }
     }
   ],
   "refresh": "1m",
-  "schemaVersion": 27,
+  "schemaVersion": 37,
   "style": "dark",
   "tags": [
     "#weka"
@@ -644,11 +687,13 @@
   "templating": {
     "list": [
       {
-        "description": null,
-        "error": null,
+        "current": {
+          "selected": true,
+          "text": "weka",
+          "value": "weka"
+        },
         "hide": 0,
         "includeAll": false,
-        "label": null,
         "multi": false,
         "name": "weka_datasource",
         "options": [],
@@ -660,14 +705,17 @@
         "type": "datasource"
       },
       {
-        "allValue": null,
-        "datasource": "$weka_datasource",
+        "current": {
+          "selected": false,
+          "text": "e2a-weka-000",
+          "value": "e2a-weka-000"
+        },
+        "datasource": {
+          "uid": "$weka_datasource"
+        },
         "definition": "label_values(weka_info,cluster)",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": null,
         "multi": false,
         "name": "cluster",
         "options": [],
@@ -680,20 +728,22 @@
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
       },
       {
-        "allValue": null,
-        "datasource": "$weka_datasource",
+        "current": {
+          "selected": false,
+          "text": "apps",
+          "value": "apps"
+        },
+        "datasource": {
+          "uid": "$weka_datasource"
+        },
         "definition": "label_values(weka_fs{cluster=\"$cluster\"},name)",
-        "description": null,
-        "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": null,
         "multi": false,
         "name": "Filesystem",
         "options": [],
@@ -706,7 +756,6 @@
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -733,5 +782,6 @@
   "timezone": "",
   "title": "Weka Filesystems Detail",
   "uid": "WekaFS",
-  "version": 8
+  "version": 1,
+  "weekStart": ""
 }

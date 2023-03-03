@@ -3,7 +3,9 @@
     "list": [
       {
         "builtIn": 1,
-        "datasource": "$weka_datasource",
+        "datasource": {
+          "uid": "$weka_datasource"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -14,9 +16,8 @@
     ]
   },
   "editable": true,
-  "gnetId": null,
+  "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "iteration": 1607779816177,
   "links": [
     {
       "$$hashKey": "object:842",
@@ -30,14 +31,12 @@
       "type": "dashboards"
     }
   ],
+  "liveNow": false,
   "panels": [
     {
-      "datasource": "weka",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PB4928806AA4C0C1F"
       },
       "gridPos": {
         "h": 2,
@@ -50,20 +49,29 @@
         "content": "<img src=/public/img/weka/WekaColor.svg>",
         "mode": "html"
       },
-      "pluginVersion": "7.3.4",
-      "timeFrom": null,
-      "timeShift": null,
-      "title": "",
+      "pluginVersion": "9.1.7",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PB4928806AA4C0C1F"
+          },
+          "refId": "A"
+        }
+      ],
       "transparent": true,
       "type": "text"
     },
     {
-      "datasource": "$weka_datasource",
+      "datasource": {
+        "uid": "$weka_datasource"
+      },
       "fieldConfig": {
         "defaults": {
           "custom": {
-            "align": null,
-            "filterable": false
+            "displayMode": "auto",
+            "filterable": false,
+            "inspect": false
           },
           "mappings": [],
           "thresholds": {
@@ -175,13 +183,22 @@
       },
       "id": 4,
       "options": {
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
         "showHeader": true,
         "sortBy": []
       },
-      "pluginVersion": "7.3.4",
-      "repeat": null,
+      "pluginVersion": "9.1.7",
       "targets": [
         {
+          "datasource": {
+            "uid": "$weka_datasource"
+          },
           "expr": "weka_alerts{cluster=\"$cluster\"}",
           "format": "table",
           "hide": false,
@@ -191,8 +208,6 @@
           "refId": "A"
         }
       ],
-      "timeFrom": null,
-      "timeShift": null,
       "title": "Alerts",
       "transformations": [
         {
@@ -226,7 +241,7 @@
     }
   ],
   "refresh": "1m",
-  "schemaVersion": 26,
+  "schemaVersion": 37,
   "style": "dark",
   "tags": [
     "#weka"
@@ -235,11 +250,12 @@
     "list": [
       {
         "current": {
+          "selected": true,
+          "text": "weka",
+          "value": "weka"
         },
-        "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": null,
         "multi": false,
         "name": "weka_datasource",
         "options": [],
@@ -251,25 +267,29 @@
         "type": "datasource"
       },
       {
-        "allValue": null,
         "current": {
+          "selected": false,
+          "text": "e2a-weka-000",
+          "value": "e2a-weka-000"
         },
-        "datasource": "$weka_datasource",
+        "datasource": {
+          "uid": "$weka_datasource"
+        },
         "definition": "label_values(weka_info,cluster)",
-        "error": null,
         "hide": 0,
         "includeAll": false,
-        "label": null,
         "multi": false,
         "name": "cluster",
         "options": [],
-        "query": "label_values(weka_info,cluster)",
+        "query": {
+          "query": "label_values(weka_info,cluster)",
+          "refId": "thanos-cluster-Variable-Query"
+        },
         "refresh": 2,
         "regex": "",
         "skipUrlSync": false,
         "sort": 0,
         "tagValuesQuery": "",
-        "tags": [],
         "tagsQuery": "",
         "type": "query",
         "useTags": false
@@ -296,5 +316,6 @@
   "timezone": "",
   "title": "Weka Alerts",
   "uid": "WekaAlerts",
-  "version": 1
+  "version": 1,
+  "weekStart": ""
 }
