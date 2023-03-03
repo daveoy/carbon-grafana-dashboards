@@ -226,7 +226,7 @@
       }
     },
     {
-      "datasource": "${DS_PROMETHEUS}",
+      "datasource": "",
       "fieldConfig": {
         "defaults": {
           "custom": {}
