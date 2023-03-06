@@ -1,145 +1,183 @@
 {
-    "annotations": {
-      "list": [
-        {
-          "builtIn": 1,
-          "datasource": {
-            "type": "grafana",
-            "uid": "-- Grafana --"
-          },
-          "enable": true,
-          "hide": true,
-          "iconColor": "rgba(0, 211, 255, 1)",
-          "name": "Annotations & Alerts",
-          "target": {
-            "limit": 100,
-            "matchAny": false,
-            "tags": [],
-            "type": "dashboard"
-          },
-          "type": "dashboard"
-        }
-      ]
-    },
-    "editable": true,
-    "fiscalYearStartMonth": 0,
-    "graphTooltip": 0,
-    "links": [],
-    "liveNow": false,
-    "panels": [
+  "annotations": {
+    "list": [
       {
+        "builtIn": 1,
         "datasource": {
-          "type": "prometheus",
-          "uid": "PC96415006F908B67"
+          "type": "grafana",
+          "uid": "-- Grafana --"
         },
-        "fieldConfig": {
-          "defaults": {
-            "custom": {
-              "align": "auto",
-              "displayMode": "auto",
-              "filterable": true,
-              "inspect": false
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            }
-          },
-          "overrides": []
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
+          "type": "dashboard"
         },
-        "gridPos": {
-          "h": 18,
-          "w": 24,
-          "x": 0,
-          "y": 0
-        },
-        "id": 1,
-        "options": {
-          "footer": {
-            "fields": "",
-            "reducer": [
-              "sum"
-            ],
-            "show": false
-          },
-          "showHeader": true,
-          "sortBy": [
-            {
-              "desc": false,
-              "displayName": "projectname"
-            }
-          ]
-        },
-        "pluginVersion": "9.1.7",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "PC96415006F908B67"
-            },
-            "editorMode": "code",
-            "exemplar": false,
-            "expr": "carbon_flame_projects",
-            "format": "table",
-            "instant": true,
-            "key": "Q-a3770d40-c6d4-4114-98a6-e22543ffa869-0",
-            "legendFormat": "__auto",
-            "range": false,
-            "refId": "A"
-          }
-        ],
-        "title": "Carbon Flame Projects",
-        "transformations": [
-          {
-            "id": "organize",
-            "options": {
-              "excludeByName": {
-                "Time": true,
-                "Value": true,
-                "__name__": true,
-                "ignoreuptime": true,
-                "instance": true,
-                "job": true,
-                "num_audio": true,
-                "num_libraries": true,
-                "num_proxies": true,
-                "prometheus": true,
-                "prometheus_replica": true
-              },
-              "indexByName": {},
-              "renameByName": {}
-            }
-          }
-        ],
-        "type": "table"
+        "type": "dashboard"
       }
-    ],
-    "schemaVersion": 37,
-    "style": "dark",
-    "tags": [
-      "flame",
-      "data"
-    ],
-    "templating": {
-      "list": []
-    },
-    "time": {
-      "from": "now-30d",
-      "to": "now"
-    },
-    "timepicker": {},
-    "timezone": "",
-    "title": "Carbon Flame Projects",
-    "version": 0,
-    "weekStart": ""
-  }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PC96415006F908B67"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto",
+            "filterable": true,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "projectname"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 310
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 18,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 1,
+      "options": {
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "archive_size"
+          }
+        ]
+      },
+      "pluginVersion": "9.1.7",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PC96415006F908B67"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "carbon_flame_projects",
+          "format": "table",
+          "instant": true,
+          "key": "Q-a3770d40-c6d4-4114-98a6-e22543ffa869-0",
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "Carbon Flame Projects",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "Value": true,
+              "__name__": true,
+              "ignoreuptime": true,
+              "instance": true,
+              "job": true,
+              "num_audio": true,
+              "num_libraries": true,
+              "num_proxies": true,
+              "prometheus": true,
+              "prometheus_replica": true
+            },
+            "indexByName": {},
+            "renameByName": {}
+          }
+        },
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "number",
+                "targetField": "archive_size"
+              },
+              {
+                "destinationType": "number",
+                "targetField": "num_frames"
+              },
+              {
+                "destinationType": "boolean",
+                "targetField": "project_deleted"
+              },
+              {
+                "destinationType": "boolean",
+                "targetField": "archive_exists"
+              }
+            ],
+            "fields": {}
+          }
+        }
+      ],
+      "type": "table"
+    }
+  ],
+  "schemaVersion": 37,
+  "style": "dark",
+  "tags": [
+    "flame",
+    "data"
+  ],
+  "templating": {
+    "list": []
+  },
+  "time": {
+    "from": "now-30d",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Carbon Flame Projects",
+  "uid": "kgthMebVz",
+  "version": 1,
+  "weekStart": ""
+}
