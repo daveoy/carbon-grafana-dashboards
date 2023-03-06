@@ -34,11 +34,38 @@
       },
       "fieldConfig": {
         "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
           "custom": {
-            "align": "auto",
-            "displayMode": "auto",
-            "filterable": true,
-            "inspect": false
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
           "mappings": [],
           "thresholds": {
@@ -55,45 +82,33 @@
             ]
           }
         },
-        "overrides": [
-          {
-            "matcher": {
-              "id": "byName",
-              "options": "projectname"
-            },
-            "properties": [
-              {
-                "id": "custom.width",
-                "value": 310
-              }
-            ]
-          }
-        ]
+        "overrides": []
       },
       "gridPos": {
-        "h": 18,
+        "h": 9,
         "w": 24,
         "x": 0,
         "y": 0
       },
-      "id": 1,
+      "id": 3,
       "options": {
-        "footer": {
-          "fields": "",
-          "reducer": [
-            "sum"
+        "legend": {
+          "calcs": [
+            "max",
+            "last",
+            "min"
           ],
-          "show": false
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
         },
-        "showHeader": true,
-        "sortBy": [
-          {
-            "desc": true,
-            "displayName": "archive_size"
-          }
-        ]
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
       },
-      "pluginVersion": "9.1.7",
       "targets": [
         {
           "datasource": {
@@ -101,56 +116,112 @@
             "uid": "PC96415006F908B67"
           },
           "editorMode": "code",
-          "exemplar": false,
-          "expr": "carbon_flame_projects",
-          "format": "table",
-          "instant": true,
-          "key": "Q-a3770d40-c6d4-4114-98a6-e22543ffa869-0",
-          "legendFormat": "__auto",
-          "range": false,
+          "expr": "sum(carbon_flame_projects) by (projectname)",
+          "legendFormat": "{{projectname}}",
+          "range": true,
           "refId": "A"
         }
       ],
-      "title": "Carbon Flame Projects",
-      "transformations": [
-        {
-          "id": "organize",
-          "options": {
-            "excludeByName": {
-              "Time": true,
-              "Value": true,
-              "__name__": true,
-              "ignoreuptime": true,
-              "instance": true,
-              "job": true,
-              "num_audio": true,
-              "num_libraries": true,
-              "num_proxies": true,
-              "prometheus": true,
-              "prometheus_replica": true
+      "title": "Project size by number of frames",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PC96415006F908B67"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
             },
-            "indexByName": {},
-            "renameByName": {}
-          }
-        },
-        {
-          "id": "convertFieldType",
-          "options": {
-            "conversions": [
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
               {
-                "destinationType": "number",
-                "targetField": "archive_size"
+                "color": "green",
+                "value": null
               },
               {
-                "destinationType": "number",
-                "targetField": "num_frames"
+                "color": "red",
+                "value": 80
               }
-            ],
-            "fields": {}
+            ]
           }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 9
+      },
+      "id": 4,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "last",
+            "min"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PC96415006F908B67"
+          },
+          "editorMode": "code",
+          "expr": "sum(carbon_flame_archives) by (projectname) / 1024 / 1024 /1024",
+          "legendFormat": "{{projectname}}",
+          "range": true,
+          "refId": "A"
         }
       ],
-      "type": "table"
+      "title": "Project archive size in GB",
+      "type": "timeseries"
     }
   ],
   "schemaVersion": 37,
@@ -163,7 +234,7 @@
     "list": []
   },
   "time": {
-    "from": "now-30d",
+    "from": "now-7d",
     "to": "now"
   },
   "timepicker": {},
