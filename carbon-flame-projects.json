@@ -144,14 +144,6 @@
               {
                 "destinationType": "number",
                 "targetField": "num_frames"
-              },
-              {
-                "destinationType": "boolean",
-                "targetField": "project_deleted"
-              },
-              {
-                "destinationType": "boolean",
-                "targetField": "archive_exists"
               }
             ],
             "fields": {}
