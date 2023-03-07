@@ -78,8 +78,8 @@
         "showHeader": true,
         "sortBy": [
           {
-            "desc": true,
-            "displayName": "Total (frames + bytes)"
+            "desc": false,
+            "displayName": "projectname"
           }
         ]
       },
@@ -92,7 +92,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "carbon_flame_projects + on(projectname,instance) group_left(archive_exists) carbon_flame_archives",
+          "expr": "(carbon_flame_projects * 0) + on(projectname,instance) group_left(archive_exists) carbon_flame_archives",
           "format": "table",
           "instant": true,
           "legendFormat": "__auto",
@@ -108,6 +108,7 @@
             "excludeByName": {
               "Time": true,
               "Value": false,
+              "ignoreuptime": true,
               "instance": true,
               "job": true,
               "num_audio": true,
@@ -133,7 +134,7 @@
               "prometheus_replica": 12
             },
             "renameByName": {
-              "Value": "Total (frames + bytes)"
+              "Value": "Archive Size"
             }
           }
         }
