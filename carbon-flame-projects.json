@@ -23,10 +23,123 @@
   },
   "editable": true,
   "fiscalYearStartMonth": 0,
-  "graphTooltip": 0,
+  "graphTooltip": 1,
   "links": [],
   "liveNow": false,
   "panels": [
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PC96415006F908B67"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "displayMode": "auto",
+            "filterable": true,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 6,
+      "options": {
+        "footer": {
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "Total (frames + bytes)"
+          }
+        ]
+      },
+      "pluginVersion": "9.1.7",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PC96415006F908B67"
+          },
+          "editorMode": "code",
+          "exemplar": false,
+          "expr": "carbon_flame_projects + on(projectname,instance) group_left(archive_exists) carbon_flame_archives",
+          "format": "table",
+          "instant": true,
+          "legendFormat": "__auto",
+          "range": false,
+          "refId": "A"
+        }
+      ],
+      "title": "carbon flame projects at a glance",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "Time": true,
+              "Value": false,
+              "instance": true,
+              "job": true,
+              "num_audio": true,
+              "num_libraries": false,
+              "num_proxies": true,
+              "prometheus": true,
+              "prometheus_replica": true
+            },
+            "indexByName": {
+              "Time": 0,
+              "Value": 13,
+              "archive_exists": 3,
+              "ignoreuptime": 5,
+              "instance": 6,
+              "job": 7,
+              "num_audio": 8,
+              "num_libraries": 9,
+              "num_proxies": 10,
+              "project_deleted": 4,
+              "projectname": 2,
+              "projectserver": 1,
+              "prometheus": 11,
+              "prometheus_replica": 12
+            },
+            "renameByName": {
+              "Value": "Total (frames + bytes)"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
     {
       "datasource": {
         "type": "prometheus",
@@ -88,7 +201,7 @@
         "h": 9,
         "w": 24,
         "x": 0,
-        "y": 0
+        "y": 8
       },
       "id": 3,
       "options": {
@@ -186,7 +299,7 @@
         "h": 9,
         "w": 24,
         "x": 0,
-        "y": 9
+        "y": 17
       },
       "id": 4,
       "options": {
