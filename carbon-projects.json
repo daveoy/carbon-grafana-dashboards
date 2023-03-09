@@ -137,6 +137,22 @@
               "Value": "Archive Size"
             }
           }
+        },
+        {
+          "id": "convertFieldType",
+          "options": {
+            "conversions": [
+              {
+                "destinationType": "number",
+                "targetField": "Archive Size"
+              },
+              {
+                "destinationType": "number",
+                "targetField": "num_libraries"
+              }
+            ],
+            "fields": {}
+          }
         }
       ],
       "type": "table"
@@ -336,13 +352,115 @@
       ],
       "title": "Project archive size in GB",
       "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PC96415006F908B67"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 26
+      },
+      "id": 7,
+      "options": {
+        "legend": {
+          "calcs": [
+            "max",
+            "last",
+            "min"
+          ],
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "sortBy": "Max",
+          "sortDesc": true
+        },
+        "tooltip": {
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PC96415006F908B67"
+          },
+          "editorMode": "code",
+          "expr": "sum(carbon_vfx_projects) by (projectname) / 1024 / 1024 /1024",
+          "legendFormat": "{{projectname}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "/vfx Project size in GB",
+      "type": "timeseries"
     }
   ],
+  "refresh": false,
   "schemaVersion": 37,
   "style": "dark",
   "tags": [
     "flame",
-    "data"
+    "data",
+    "vfx",
+    "weka",
+    "cg"
   ],
   "templating": {
     "list": []
@@ -353,7 +471,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "Carbon Flame Projects",
+  "title": "Carbon Projects",
   "uid": "kgthMebVz",
   "version": 1,
   "weekStart": ""
