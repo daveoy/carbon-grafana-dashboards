@@ -442,7 +442,7 @@
             "uid": "PC96415006F908B67"
           },
           "editorMode": "code",
-          "expr": "sum(carbon_vfx_projects) by (projectname) / 1024 / 1024 /1024",
+          "expr": "sum(carbon_vfx_projects) by (projectname) / 1024 / 1024",
           "legendFormat": "{{projectname}}",
           "range": true,
           "refId": "A"
