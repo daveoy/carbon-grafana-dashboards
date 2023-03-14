@@ -61,7 +61,7 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 11,
         "w": 24,
         "x": 0,
         "y": 0
@@ -174,7 +174,7 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 0,
+            "fillOpacity": 30,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -182,7 +182,7 @@
               "viz": false
             },
             "lineInterpolation": "linear",
-            "lineWidth": 1,
+            "lineWidth": 2,
             "pointSize": 5,
             "scaleDistribution": {
               "type": "linear"
@@ -215,10 +215,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
+        "h": 13,
         "w": 24,
         "x": 0,
-        "y": 8
+        "y": 11
       },
       "id": 3,
       "options": {
@@ -229,7 +229,7 @@
             "min"
           ],
           "displayMode": "table",
-          "placement": "right",
+          "placement": "bottom",
           "showLegend": true,
           "sortBy": "Max",
           "sortDesc": true
@@ -272,7 +272,7 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 0,
+            "fillOpacity": 30,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -280,13 +280,13 @@
               "viz": false
             },
             "lineInterpolation": "linear",
-            "lineWidth": 1,
+            "lineWidth": 2,
             "pointSize": 5,
             "scaleDistribution": {
               "type": "linear"
             },
             "showPoints": "auto",
-            "spanNulls": false,
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -313,10 +313,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
+        "h": 15,
         "w": 24,
         "x": 0,
-        "y": 17
+        "y": 24
       },
       "id": 4,
       "options": {
@@ -327,7 +327,7 @@
             "min"
           ],
           "displayMode": "table",
-          "placement": "right",
+          "placement": "bottom",
           "showLegend": true,
           "sortBy": "Max",
           "sortDesc": true
@@ -370,7 +370,7 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 0,
+            "fillOpacity": 30,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -378,13 +378,13 @@
               "viz": false
             },
             "lineInterpolation": "linear",
-            "lineWidth": 1,
+            "lineWidth": 2,
             "pointSize": 5,
             "scaleDistribution": {
               "type": "linear"
             },
             "showPoints": "auto",
-            "spanNulls": false,
+            "spanNulls": true,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -411,10 +411,10 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
+        "h": 18,
         "w": 24,
         "x": 0,
-        "y": 26
+        "y": 39
       },
       "id": 7,
       "options": {
@@ -425,7 +425,7 @@
             "min"
           ],
           "displayMode": "table",
-          "placement": "right",
+          "placement": "bottom",
           "showLegend": true,
           "sortBy": "Max",
           "sortDesc": true
@@ -452,7 +452,7 @@
       "type": "timeseries"
     }
   ],
-  "refresh": false,
+  "refresh": "1m",
   "schemaVersion": 37,
   "style": "dark",
   "tags": [
