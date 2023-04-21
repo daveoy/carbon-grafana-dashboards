@@ -128,6 +128,7 @@
       "type": "timeseries"
     }
   ],
+  "refresh": "1m",
   "schemaVersion": 37,
   "style": "dark",
   "tags": [],
@@ -140,7 +141,7 @@
           "value": "n0.chi-bl2-001.carbonvfx.com"
         },
         "definition": "label_values(carbon_baselight_projects,hostname)",
-        "hide": 0,
+        "hide": 2,
         "includeAll": false,
         "multi": false,
         "name": "host",
@@ -158,7 +159,7 @@
     ]
   },
   "time": {
-    "from": "now-2d",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {},
