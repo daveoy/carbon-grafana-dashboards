@@ -111,7 +111,7 @@
               "uid": "PC96415006F908B67"
             },
             "editorMode": "code",
-            "expr": "carbon_up{job=\"aws-render\"}",
+            "expr": "carbon_up{job=\"aws-flame\"}",
             "instant": true,
             "key": "Q-4aa55f9e-5ac6-4d82-9f76-df009fbfb7d4-0",
             "legendFormat": "__auto",
@@ -137,6 +137,6 @@
     "timezone": "",
     "title": "carbon up",
     "uid": "JdYiswQVz",
-    "version": 1,
+    "version": 2,
     "weekStart": ""
   }
