@@ -92,7 +92,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "(carbon_flame_projects * 0) + on(projectname,instance) group_left(archive_exists) carbon_flame_archives",
+          "expr": "carbon_flame_projects",
           "format": "table",
           "instant": true,
           "legendFormat": "__auto",
@@ -108,6 +108,9 @@
             "excludeByName": {
               "Time": true,
               "Value": false,
+              "__name__": true,
+              "ignoreiowait": true,
+              "ignoreunderutilized": true,
               "ignoreuptime": true,
               "instance": true,
               "job": true,
@@ -134,7 +137,7 @@
               "prometheus_replica": 12
             },
             "renameByName": {
-              "Value": "Archive Size"
+              "Value": ""
             }
           }
         },
@@ -344,7 +347,7 @@
             "uid": "PC96415006F908B67"
           },
           "editorMode": "code",
-          "expr": "sum(carbon_flame_archives) by (projectname,projectserver) / 1024 / 1024 /1024",
+          "expr": "carbon_flame_archives / 1024 / 1024 /1024",
           "legendFormat": "{{projectname}}",
           "range": true,
           "refId": "A"
